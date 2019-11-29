@@ -1,17 +1,23 @@
-﻿<Window x:Class="WpfApp3.MainWindow"
+﻿<Window x:Class="SinglyLinkedList.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp3"
+        xmlns:local="clr-namespace:SinglyLinkedList"
+        xmlns:dataGrid2D="http://gu.se/DataGrid2D"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Canvas>
-            <ListBox x:Name="ListBox1" Height="124" Width="410" Canvas.Left="10" Canvas.Top="285" ></ListBox>
-            <Button x:Name="ButtonEnterData" Content="Внести данные" Width="100" Height="20" Canvas.Left="10" Canvas.Top="64" Click="ButtonEnterData_Click"></Button>
-            <TextBox x:Name="Txt1" Height="304" Width="357" Canvas.Left="425" Canvas.Top="105"></TextBox>
+            <ListBox x:Name="ListBox1" Height="320" Width="147" Canvas.Left="10" Canvas.Top="89" ></ListBox>
+            <Button x:Name="ButtonEnterData" Content="Внести" Width="100" Height="20" Canvas.Left="10" Canvas.Top="64" Click="ButtonEnterData_Click"></Button>
+            <Button x:Name="ButtonEnterData1" Content="Отобразить" Width="100" Height="20" Canvas.Left="115" Canvas.Top="64" Click="ButtonEnterData1_Click"></Button>
+            <Button x:Name="ButtonClearData" Content="Удалить все данные" Width="121" Height="20" Canvas.Left="157" Canvas.Top="89" Click="ButtonClearData_Click" ></Button>
 
+            <DataGrid AutoGenerateColumns="True" x:Name="SubscribersGrid" Height="409" Width="499" Canvas.Left="283" ItemsSource="{Binding}">
+
+            </DataGrid>
+            <TextBox x:Name="txt1" Height="56" Width="278" Text="{Binding Text}"></TextBox>
         </Canvas>
     </Grid>
 </Window>

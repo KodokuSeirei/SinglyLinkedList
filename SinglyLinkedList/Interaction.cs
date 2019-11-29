@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp3
+namespace SinglyLinkedList
 {
     class Interaction
     {
@@ -16,30 +16,31 @@ namespace WpfApp3
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
             Phonebook phonebook = new Phonebook();
-            using (StreamReader readfile = new StreamReader(openFileDialog.FileName))
+            try
             {
-
-                string[] allLines = readfile.ReadToEnd().Split('\n');
-                string[,] subscribers = new string[7,7];
-                string[] meta = new string[7];
-                string[] line=new string[7];
-                for (int i = 0; i < allLines.Length; i++)
+                using (StreamReader readfile = new StreamReader(openFileDialog.FileName,Encoding.Default))
                 {
-                    line = allLines[i].Split(';');
-                    for (int j = 0; j < line.Length; j++)
+
+                    string[] allLines = readfile.ReadToEnd().Split(new[]{Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+                    string[,] subscribers = new string[allLines.Length, 7];
+                    string[] meta = new string[7];
+                    string[] line;
+                    for (int i = 0; i < allLines.Length; i++)
                     {
-                        if (i == 0)
-                            meta[j] = line[j];
-                        else
-                            subscribers[i, j] = line[j];                         
+                        line = allLines[i].Split(';');
+                        for (int j = 0; j < line.Length; j++)
+                        {
+                            subscribers[i, j] = line[j];
+                        }
                     }
-                }               
-                phonebook.Name = meta[0];             
-                MessageBox.Show(phonebook.Name);
-                phonebook.OwnerName = meta[1];
-                MessageBox.Show(phonebook.OwnerName);
-                phonebook.Data = subscribers;
+                    phonebook.Name = subscribers[0, 5];
+                    phonebook.OwnerName = subscribers[0, 6];
+                    phonebook.Data = subscribers;
+                }
+
             }
+            catch (Exception exc)
+            { MessageBox.Show(exc.Message); }
             return phonebook;
         }
     }

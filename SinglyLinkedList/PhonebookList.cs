@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp3
+namespace SinglyLinkedList
 {
     class PhonebookList
     {
@@ -47,7 +47,6 @@ namespace WpfApp3
         }
 
 
-        //public Phonebook Get()
         public Phonebook this[int _position]
         {
             get
