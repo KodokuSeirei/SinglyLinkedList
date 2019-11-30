@@ -1,0 +1,32 @@
+﻿<Window x:Class="SinglyLinkedList.AddSubscriberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SinglyLinkedList"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Добавление абонента" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Content="Номер телефона:" />
+            <TextBox x:Name="TextPhoneNumber"></TextBox>
+            <Label Content="Тип абонента (фирма/частное лицо):"/>
+            <TextBox x:Name="TextType"></TextBox>
+            <Label Content="Абонент (название/ФИО):"/>
+            <TextBox x:Name="TextName"></TextBox>
+            <Label Content="Адрес:"/>
+            <TextBox x:Name="TextAdress"></TextBox>
+            <Label Content="Тариф:"/>
+            <TextBox x:Name="TextRate"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <Button x:Name="ButtonOk" Content="Добавить" Height="25" Width="100" Click="ButtonOk_Click"></Button>
+        <Button x:Name="ButtonCancel" Content="Отмена" Height="25"  Width="100" Click="ButtonCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

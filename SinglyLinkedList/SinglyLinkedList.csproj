@@ -59,9 +59,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddSubscriberWindow.xaml.cs">
+      <DependentUpon>AddSubscriberWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interaction.cs" />
     <Compile Include="Phonebook.cs" />
     <Compile Include="Subscriber.cs" />
+    <Page Include="AddSubscriberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
