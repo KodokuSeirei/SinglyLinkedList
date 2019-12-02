@@ -8,18 +8,18 @@ namespace SinglyLinkedList
 {
    public class Subscriber
     {
-        public string PhoneNumber { get; set; }
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public string Adress { get; set; }
-        public string Rate { get; set; }
+        public string НомерТелефона { get; set; }
+        public string Тип { get; set; }
+        public string Имя { get; set; }
+        public string Адрес { get; set; }
+        public string Тариф { get; set; }
         public Subscriber(string phoneNumber, string type, string name, string adress, string rate)
         {
-            PhoneNumber = phoneNumber;
-            Type = type;
-            Name = name;
-            Adress = adress;
-            Rate = rate;
+            НомерТелефона = phoneNumber;
+            Тип = type;
+            Имя = name;
+            Адрес = adress;
+            Тариф = rate;
         }
     }
 }

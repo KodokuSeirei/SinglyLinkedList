@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:SinglyLinkedList"
         xmlns:dataGrid2D="http://gu.se/DataGrid2D"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900">
     <Grid>
-        <Canvas>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+       </Grid.ColumnDefinitions>
+        <Canvas Grid.Column="0">
             <ListBox x:Name="ListBox1" Height="320" Width="147" Canvas.Left="10" Canvas.Top="89" ></ListBox>
             <Button x:Name="ButtonEnterData" Content="Внести" Width="100" Height="20" Canvas.Left="10" Canvas.Top="64" Click="ButtonEnterData_Click"></Button>
             <Button x:Name="ButtonEnterData1" Content="Отобразить" Width="100" Height="20" Canvas.Left="115" Canvas.Top="64" Click="ButtonEnterData1_Click"></Button>
@@ -17,8 +21,10 @@
             <Button x:Name="ButtonClearData" Content="Удалить все данные" Width="126" Height="20" Canvas.Left="157" Canvas.Top="139" Click="ButtonClearData_Click" ></Button>
             <Button x:Name="ButtonClearTable" Content="Очистить таблицу" Width="126" Height="20" Canvas.Left="157" Canvas.Top="164" Click="ButtonClearTable_Click" ></Button>
             <Button x:Name="ButtonSaveData" Content="Сохранить" Width="126" Height="20" Canvas.Left="157" Canvas.Top="189" Click="ButtonSaveData_Click" ></Button>
-            <DataGrid AutoGenerateColumns="True" x:Name="SubscribersGrid" Height="409" Width="499" Canvas.Left="283" ItemsSource="{Binding}"/>
             <TextBox x:Name="txt1" Height="56" Width="278" Text="{Binding Text}"></TextBox>
         </Canvas>
+        <StackPanel Grid.Column="1">
+        <DataGrid AutoGenerateColumns="True" x:Name="SubscribersGrid" ItemsSource="{Binding}"/>
+        </StackPanel>
     </Grid>
 </Window>

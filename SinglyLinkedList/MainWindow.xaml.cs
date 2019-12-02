@@ -64,7 +64,7 @@ namespace SinglyLinkedList
                     txt1.Text += phonebookList[0].Data.Length;
                     SubscribersGrid.DataContext = subscribers;
 
-                    for (int i = 0; i < phonebookList[0].Data.GetLength(0); i++)
+                    for (int i = 1; i < phonebookList[0].Data.GetLength(0); i++)
                     {
                         subscribers.Add(
                         new Subscriber(phonebookList[0].Data[i, 0], phonebookList[0].Data[i, 1], phonebookList[0].Data[i, 2], phonebookList[0].Data[i, 3], phonebookList[0].Data[i, 4])
@@ -112,11 +112,11 @@ namespace SinglyLinkedList
         {
             for (int i = 0; i < subscribers.Count; i++)
             {
-                phonebookList[0].Data[i, 0] = subscribers[i].PhoneNumber;
-                phonebookList[0].Data[i, 1] = subscribers[i].Type;
-                phonebookList[0].Data[i, 2] = subscribers[i].Name;
-                phonebookList[0].Data[i, 3] = subscribers[i].Adress;
-                phonebookList[0].Data[i, 4] = subscribers[i].Rate;
+                phonebookList[0].Data[i, 0] = subscribers[i].НомерТелефона;
+                phonebookList[0].Data[i, 1] = subscribers[i].Тип;
+                phonebookList[0].Data[i, 2] = subscribers[i].Имя;
+                phonebookList[0].Data[i, 3] = subscribers[i].Адрес;
+                phonebookList[0].Data[i, 4] = subscribers[i].Тариф;
             }
             interaction.SaveData(phonebookList);
         }

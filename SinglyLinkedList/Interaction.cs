@@ -20,24 +20,31 @@ namespace SinglyLinkedList
                 MessageBox.Show("Файл не выбран");
             
             Phonebook phonebook = new Phonebook();
-            
-                using (StreamReader readfile = new StreamReader(openFileDialog.FileName,Encoding.Default))
+            using (StreamReader readfile = new StreamReader(openFileDialog.FileName, Encoding.Default))
+            {
+                string[] allLines = readfile.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                string[,] subscribers = new string[allLines.Length-2, 5];
+                for (int i = 0; i < allLines.Length; i++)
                 {
-                    string[] allLines = readfile.ReadToEnd().Split(new[]{Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-                    string[,] subscribers = new string[allLines.Length, 7];
-                    for (int i = 0; i < allLines.Length; i++)
+                    line = allLines[i].Split(';');
+                    if (i != allLines.Length-1 && i != allLines.Length-2)
                     {
-                        line = allLines[i].Split(';');
                         for (int j = 0; j < line.Length; j++)
                         {
                             subscribers[i, j] = line[j];
                         }
+                       
                     }
-                    phonebook.Name = subscribers[0, 5];
-                    phonebook.OwnerName = subscribers[0, 6];
-                    phonebook.Data = subscribers;
-                }         
+                    if(i == allLines.Length)
+                    {
+                        phonebook.OwnerName = line[0];
+                        phonebook.Name = line[1];
+                    }
+                }
+                phonebook.Data = subscribers;
+            }
             return phonebook;
+
         }
         public void SaveData(PhonebookList phonebookList)
         {
@@ -57,7 +64,7 @@ namespace SinglyLinkedList
                     if (i != phonebookList[0].Data.GetLength(0) - 1)
                         allText += "\n";
                 }
-                streamWriter.Write(allText, Encoding.Unicode);
+                streamWriter.Write(allText);
             }
 
 
