@@ -4,27 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SinglyLinkedList"
-        xmlns:dataGrid2D="http://gu.se/DataGrid2D"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900">
+        WindowStartupLocation="CenterScreen"       
+        Title="SinglyLinkedList" Height="500" Width="814">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/Putin.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="180" ></ColumnDefinition>
        </Grid.ColumnDefinitions>
-        <Canvas Grid.Column="0">
-            <ListBox x:Name="ListBox1" Height="320" Width="147" Canvas.Left="10" Canvas.Top="89" ></ListBox>
-            <Button x:Name="ButtonEnterData" Content="Внести" Width="100" Height="20" Canvas.Left="10" Canvas.Top="64" Click="ButtonEnterData_Click"></Button>
-            <Button x:Name="ButtonEnterData1" Content="Отобразить" Width="100" Height="20" Canvas.Left="115" Canvas.Top="64" Click="ButtonEnterData1_Click"></Button>
-            <Button x:Name="ButtonAddSubscriber" Content="Добавить абонента" Width="126" Height="20" Canvas.Left="157" Canvas.Top="89" Click="ButtonAddSubscriber_Click" ></Button>
-            <Button x:Name="ButtonDeleteSubscriber" Content="Уничтожить абонента" Width="126" Height="20" Canvas.Left="157" Canvas.Top="114" Click="ButtonDeleteSubscriber_Click" ></Button>
-            <Button x:Name="ButtonClearData" Content="Удалить все данные" Width="126" Height="20" Canvas.Left="157" Canvas.Top="139" Click="ButtonClearData_Click" ></Button>
-            <Button x:Name="ButtonClearTable" Content="Очистить таблицу" Width="126" Height="20" Canvas.Left="157" Canvas.Top="164" Click="ButtonClearTable_Click" ></Button>
-            <Button x:Name="ButtonSaveData" Content="Сохранить" Width="126" Height="20" Canvas.Left="157" Canvas.Top="189" Click="ButtonSaveData_Click" ></Button>
-            <TextBox x:Name="txt1" Height="56" Width="278" Text="{Binding Text}"></TextBox>
-        </Canvas>
-        <StackPanel Grid.Column="1">
-        <DataGrid AutoGenerateColumns="True" x:Name="SubscribersGrid" ItemsSource="{Binding}"/>
+        
+        <StackPanel Grid.Column="0" >
+            <Label Content="Cправочник:" FontSize="13" FontWeight="DemiBold"></Label>
+            <TextBox x:Name="TxtPhonebookName" FontSize="12" FontWeight="DemiBold"   ></TextBox>
+            <Label Content="Владелец:" FontSize="13" FontWeight="DemiBold"></Label>
+            <TextBox x:Name="TxtOwnerName" FontSize="12" FontWeight="DemiBold"  ></TextBox>
         </StackPanel>
+        
+        <StackPanel Grid.Column="1">
+            <DataGrid AutoGenerateColumns="True" x:Name="SubscribersGrid" ItemsSource="{Binding}"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2">
+            <Button x:Name="ButtonEnterData" FontSize="15" FontWeight="DemiBold"  BorderBrush="Transparent" Background="Transparent"  Content="Открыть файл" Height="30" Margin="0,5,0,5" Click="ButtonEnterData_Click"></Button>
+            <Button x:Name="ButtonEnterData1" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"    Background="Transparent" Content="Отобразить данные"  Height="30" Margin="5" Click="ButtonEnterData1_Click"></Button>
+            <Button x:Name="ButtonAddSubscriber" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Добавить абонента"  Height="30" Margin="5" Click="ButtonAddSubscriber_Click" ></Button>
+            <Button x:Name="ButtonDeleteSubscriber" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Уничтожить абонента"  Height="30" Margin="5" Click="ButtonDeleteSubscriber_Click" ></Button>
+            <Button x:Name="ButtonClearData" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Удалить все данные" Height="30" Margin="5" Click="ButtonClearData_Click" ></Button>
+            <Button x:Name="ButtonClearTable" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Очистить таблицу" Height="30" Margin="5" Click="ButtonClearTable_Click" ></Button>
+            <Button x:Name="ButtonSaveData" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Сохранить"  Height="30" Margin="5" Click="ButtonSaveData_Click" />
+        </StackPanel>
+       
     </Grid>
 </Window>
