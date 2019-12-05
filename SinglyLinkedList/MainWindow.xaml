@@ -30,12 +30,11 @@
         
         <StackPanel Grid.Column="2">
             <Button x:Name="ButtonEnterData" FontSize="15" FontWeight="DemiBold"  BorderBrush="Transparent" Background="Transparent"  Content="Открыть файл" Height="30" Margin="0,5,0,5" Click="ButtonEnterData_Click"></Button>
-            <Button x:Name="ButtonEnterData1" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"    Background="Transparent" Content="Отобразить данные"  Height="30" Margin="5" Click="ButtonEnterData1_Click"></Button>
             <Button x:Name="ButtonAddSubscriber" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Добавить абонента"  Height="30" Margin="5" Click="ButtonAddSubscriber_Click" ></Button>
             <Button x:Name="ButtonDeleteSubscriber" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Уничтожить абонента"  Height="30" Margin="5" Click="ButtonDeleteSubscriber_Click" ></Button>
             <Button x:Name="ButtonClearData" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Удалить все данные" Height="30" Margin="5" Click="ButtonClearData_Click" ></Button>
-            <Button x:Name="ButtonClearTable" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Очистить таблицу" Height="30" Margin="5" Click="ButtonClearTable_Click" ></Button>
             <Button x:Name="ButtonSaveData" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Сохранить"  Height="30" Margin="5" Click="ButtonSaveData_Click" />
+            <Button x:Name="ButtonExit" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"  Background="Transparent" Content="Выйти"  Height="30" Margin="5" Click="ButtonExit_Click" />
         </StackPanel>
        
     </Grid>

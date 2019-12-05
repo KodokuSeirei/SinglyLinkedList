@@ -27,7 +27,10 @@ namespace SinglyLinkedList
     {
         public MainWindow()
         {
-            InitializeComponent();         
+            InitializeComponent();
+            //Подписываем событие при закрытии формы
+             Closing += MainWindow_Closing;
+           
         }
         //Создаем объект,класса с помощью которого мы сохраняем или октрываем файл
         Interaction interaction = new Interaction();
@@ -35,8 +38,23 @@ namespace SinglyLinkedList
         ObservableCollection<Subscriber> subscribers = new ObservableCollection<Subscriber>();
         PhonebookList phonebookList=new PhonebookList();
         Phonebook phonebook;
-       
-        //Событие нажатие на кнопку "Выбрать файл"
+        MessageBoxResult result;
+
+        //Метод что мы вызовем перед закрытием формы
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Проверяем есть ли данные
+            if (subscribers.Count > 0)
+            {
+                //Нужно сохранить данные? Если отвечаем согласием, то сохраняем 
+                result = MessageBox.Show("Вы хотите сохранить данные перед выходом?", "Выход из приложения", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                    ButtonSaveData_Click(sender, null);
+
+            }
+        }
+
+        //Событие нажатие на кнопку "Выбрать файл"        
         private void ButtonEnterData_Click(object sender, RoutedEventArgs e)
         {
             try 
@@ -51,46 +69,31 @@ namespace SinglyLinkedList
                     //Заполняем нашу структуру данными из файла             
                     phonebook = interaction.EnterData();
                     //Дабавляем заполненную структуру в список
-                    phonebookList.Push(phonebook);
+                    phonebookList.Push(phonebook);                    
+                   
+                    
+                    //Используем наш ObservableCollection в качестве контекста данных для таблицы
+                    SubscribersGrid.DataContext = subscribers;
+                    //Заполняем поля для имён
+                    TxtOwnerName.Text = phonebookList[0].OwnerName;
+                    TxtPhonebookName.Text = phonebookList[0].Name;
+                        //Добавляем в список для отображения в таблице
+                    for (int i = 1; i < phonebookList[0].Data.GetLength(0); i++)
+                        {
+                            subscribers.Add(
+                            new Subscriber(phonebookList[0].Data[i, 0], phonebookList[0].Data[i, 1], phonebookList[0].Data[i, 2], phonebookList[0].Data[i, 3], phonebookList[0].Data[i, 4])
+                            );
+                        }
+
+                    }
                 }
-            }
             catch(Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
         }
-        //Событие нажатие на кнопку "Отобразить данные"
-        private void ButtonEnterData1_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (subscribers.Count > 0)
-                {
-                    MessageBox.Show(@"Данные уже были отображены, нажмите кнопку ""Очистить данные"", затем снова ""Отобразить"" для повторного отображения данных");
-                }
-                else
-                {
-                    //Используем наш ObservableCollection в качестве контекста данных для таблицы
-                    SubscribersGrid.DataContext = subscribers;
-                    TxtOwnerName.Text = phonebookList[0].OwnerName;
-                    TxtPhonebookName.Text = phonebookList[0].Name;
-                    //Добавляем в список для отображения в таблице
-                    for (int i = 1; i < phonebookList[0].Data.GetLength(0); i++)
-                    {
-                        subscribers.Add(
-                        new Subscriber(phonebookList[0].Data[i, 0], phonebookList[0].Data[i, 1], phonebookList[0].Data[i, 2], phonebookList[0].Data[i, 3], phonebookList[0].Data[i, 4])
-                        );
-                    }
-                    
-
-                }
-            }
-
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
+       
+        
         //Событие нажатие на кнопку "Удалить все данные"
         private void ButtonClearData_Click(object sender, RoutedEventArgs e)
         {
@@ -98,6 +101,9 @@ namespace SinglyLinkedList
             phonebookList = null;
             //Создаем новый phonebookList
             phonebookList = new PhonebookList();
+            //Удаляем имена из текстбоксов
+            TxtOwnerName.Text = "";
+            TxtPhonebookName.Text = "";
             //Очищаем список абонетов
             subscribers.Clear();
         }
@@ -123,16 +129,13 @@ namespace SinglyLinkedList
             subscribers.RemoveAt(i);
         }
         //Событие нажатие на кнопку "Очистить таблицу"
-        private void ButtonClearTable_Click(object sender, RoutedEventArgs e)
-        {
-            //Очищаем элементы списка ObservableCollection
-            subscribers.Clear();
-        }
+     
 
         private void ButtonSaveData_Click(object sender, RoutedEventArgs e)
         { 
             try
-            {                            
+            {                         
+                //Вызываем метод сохранение и передаем ему данные из программы через параметры
                 interaction.SaveData(subscribers,TxtOwnerName.Text,TxtOwnerName.Text);
             }
             catch (Exception exc)
@@ -140,6 +143,11 @@ namespace SinglyLinkedList
                 MessageBox.Show(exc.Message);
             }
 
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

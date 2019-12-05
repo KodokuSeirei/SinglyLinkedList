@@ -24,8 +24,10 @@ namespace SinglyLinkedList
             InitializeComponent();
         }
         Subscriber _subscriber;
+        //Свойство через которое мы получим даные из этой формы
        public Subscriber Subscriber { get { return _subscriber; } set { value = _subscriber; } }
 
+        //Если "Ok" то задаем свойству значения из полей и задаем DialogResult значение true 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
             _subscriber = new Subscriber(TextPhoneNumber.Text, TextType.Text, TextName.Text, TextAdress.Text, TextRate.Text);
