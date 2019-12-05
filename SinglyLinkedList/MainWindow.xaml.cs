@@ -28,8 +28,10 @@ namespace SinglyLinkedList
         public MainWindow()
         {
             InitializeComponent();
+            //Используем наш ObservableCollection в качестве контекста данных для таблицы
+            SubscribersGrid.DataContext = subscribers;
             //Подписываем событие при закрытии формы
-             Closing += MainWindow_Closing;
+            Closing += MainWindow_Closing;
            
         }
         //Создаем объект,класса с помощью которого мы сохраняем или октрываем файл
@@ -70,10 +72,7 @@ namespace SinglyLinkedList
                     phonebook = interaction.EnterData();
                     //Дабавляем заполненную структуру в список
                     phonebookList.Push(phonebook);                    
-                   
-                    
-                    //Используем наш ObservableCollection в качестве контекста данных для таблицы
-                    SubscribersGrid.DataContext = subscribers;
+                     
                     //Заполняем поля для имён
                     TxtOwnerName.Text = phonebookList[0].OwnerName;
                     TxtPhonebookName.Text = phonebookList[0].Name;
