@@ -135,7 +135,7 @@ namespace SinglyLinkedList
             try
             {                         
                 //Вызываем метод сохранение и передаем ему данные из программы через параметры
-                interaction.SaveData(subscribers,TxtOwnerName.Text,TxtOwnerName.Text);
+                interaction.SaveData(subscribers,TxtOwnerName.Text,TxtPhonebookName.Text);
             }
             catch (Exception exc)
             {

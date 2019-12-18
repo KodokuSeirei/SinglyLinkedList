@@ -25,7 +25,7 @@ namespace SinglyLinkedList
         }
         Subscriber _subscriber;
         //Свойство через которое мы получим даные из этой формы
-       public Subscriber Subscriber { get { return _subscriber; } set { value = _subscriber; } }
+       public Subscriber Subscriber { get { return _subscriber; } set { _subscriber = value; } }
 
         //Если "Ok" то задаем свойству значения из полей и задаем DialogResult значение true 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
